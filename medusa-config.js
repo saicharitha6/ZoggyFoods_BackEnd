@@ -41,6 +41,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
+      backend_url: process.env.MEDUSA_BACKEND_URL,
     },
   },
   {
@@ -53,7 +54,7 @@ const plugins = [
       },
     },
   },
-   {
+  {
     resolve: `medusa-plugin-meilisearch`,
     options: {
       // config object passed when creating an instance
@@ -63,26 +64,23 @@ const plugins = [
         apiKey: process.env.MEILISEARCH_API_KEY,
       },
       settings: {
-         products: {
+        products: {
           indexSettings: {
-            searchableAttributes: [
-              "title", 
-              "description",
-            ],
+            searchableAttributes: ["title", "description"],
           },
           primaryKey: "id",
-          transformer: (product) =>{
+          transformer: (product) => {
             delete product["collection_id"];
             delete product["external_id"];
             delete product["profile_id"];
             delete product["type_id"];
             product["productId"] = product["id"];
             return product;
-          } ,
-        },
+          },
         },
       },
     },
+  },
 ];
 
 const modules = {
