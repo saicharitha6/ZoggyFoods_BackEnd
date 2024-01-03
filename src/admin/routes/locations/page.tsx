@@ -165,8 +165,10 @@ const CustomLocation = () => {
   ]
 
   return (
-    <div>
-      <h2>Select Region</h2>
+    <div className="large:px-xlarge py-xlarge bg-grey-5 min-h-content overflow-y-auto">
+      <div className="xsmall:mx-base small:mx-xlarge medium:mx-4xlarge large:mx-auto large:max-w-7xl large:w-full h-full">
+
+      <h2 className="inter-2xlarge-semibold mb-xsmall">Select Region</h2>
 
       <div>
         <label>Selected District: {district}</label>
@@ -186,6 +188,7 @@ const CustomLocation = () => {
             </option>
           ))}
         </select>
+      </div>
       </div>
     </div>
   );

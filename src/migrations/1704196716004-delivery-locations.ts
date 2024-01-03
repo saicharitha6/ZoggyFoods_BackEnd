@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
+import { v4 as uuidv4 } from "uuid";
 
-export class Pincodes1704196716004 implements MigrationInterface {
+
+export class DeliveryLocations1704196716004 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         const data = {
@@ -163,18 +165,21 @@ export class Pincodes1704196716004 implements MigrationInterface {
             { "area": "World University centre", "pincode": "600031" },]
 
         };
-        await queryRunner.query(`CREATE TABLE "pincodes" (
-            "id" SERIAL PRIMARY KEY,
+        await queryRunner.query(`CREATE TABLE "delivery_locations" (
+            "id" VARCHAR PRIMARY KEY,
             "area" VARCHAR NOT NULL,
             "pincode" VARCHAR NOT NULL,
-            "district" VARCHAR NOT NULL
+            "district" VARCHAR NOT NULL,
+            "selected_areas" BOOLEAN DEFAULT FALSE
         )`);
+    
         for (const { area, pincode } of data.values) {
-            const query = `
-            INSERT INTO pincodes (area, pincode, district)
-            VALUES ('${area}', '${pincode}', '${data.district}')
-        `;
-            await queryRunner.query(query);
+          const id = `dl_${uuidv4()}`; // Generates a UUID and prepends "pin_"
+          const query = `
+            INSERT INTO delivery_locations (id, area, pincode, district)
+            VALUES ('${id}', '${area}', '${pincode}', '${data.district}')
+          `;
+          await queryRunner.query(query);
         }
     }
 
