@@ -165,19 +165,23 @@ export class DeliveryLocations1704196716004 implements MigrationInterface {
             { "area": "World University centre", "pincode": "600031" },]
 
         };
-        await queryRunner.query(`CREATE TABLE "delivery_locations" (
+        await queryRunner.query(`CREATE TABLE "delivery_location" (
             "id" VARCHAR PRIMARY KEY,
             "area" VARCHAR NOT NULL,
             "pincode" VARCHAR NOT NULL,
             "district" VARCHAR NOT NULL,
-            "selected_areas" BOOLEAN DEFAULT FALSE
+            "selected_areas" BOOLEAN DEFAULT FALSE,
+            "created_at" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            "updated_at" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         )`);
     
         for (const { area, pincode } of data.values) {
           const id = `dl_${uuidv4()}`; // Generates a UUID and prepends "pin_"
           const query = `
-            INSERT INTO delivery_locations (id, area, pincode, district)
-            VALUES ('${id}', '${area}', '${pincode}', '${data.district}')
+          INSERT INTO delivery_location
+            (id, area, pincode, district, created_at, updated_at)
+          VALUES 
+            ('${id}', '${area}', '${pincode}', '${data.district}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
           `;
           await queryRunner.query(query);
         }

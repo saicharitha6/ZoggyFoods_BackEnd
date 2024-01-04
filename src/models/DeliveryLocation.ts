@@ -8,7 +8,7 @@ export class DeliveryLocation extends BaseEntity {
   id: string;
   
   @Column({ type: "varchar", nullable: true })
-  name: string;
+  area: string;
 
   @Column({ type: "varchar" })
   pincode: string;
@@ -17,7 +17,7 @@ export class DeliveryLocation extends BaseEntity {
   district: string;
 
   @Column({ type: "boolean", default: false }) // New column for tracking selected areas
-  selected_area: boolean;
+  selected_areas: boolean;
 
   @BeforeInsert()
   private beforeInsert(): void {
