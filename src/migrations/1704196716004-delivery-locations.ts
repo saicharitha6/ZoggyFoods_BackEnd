@@ -170,7 +170,7 @@ export class DeliveryLocations1704196716004 implements MigrationInterface {
             "area" VARCHAR NOT NULL,
             "pincode" VARCHAR NOT NULL,
             "district" VARCHAR NOT NULL,
-            "selected_areas" BOOLEAN DEFAULT FALSE,
+            "is_deliverable" BOOLEAN DEFAULT FALSE,
             "created_at" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
             "updated_at" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         )`);

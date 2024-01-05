@@ -13,14 +13,12 @@ import { DeliveryLocation } from "../../../models/DeliveryLocation";
     .select([
         "DeliveryLocation.id",
         "DeliveryLocation.pincode",
-        "DeliveryLocation.area", // Ensure the correct alias for the 'selected_area' column
-        // Add other columns you need from DeliveryLocation table
+        "DeliveryLocation.area",
+        "DeliveryLocation.is_deliverable",
     ])
     .getRawMany();
 
-  
-console.log("All photos from the db: ", locations)
-    res.json({
+      res.json({
       locations,
     })
   }
@@ -30,11 +28,11 @@ console.log("All photos from the db: ", locations)
     res: MedusaResponse
   ) => {
     try {
-      const { locationId } = req.body; // Assuming you receive locationId and newArea in the request body
+      const { locationId, selectedArea } = req.body; // Assuming you receive locationId and newArea in the request body
       const locationUpdated = await DeliveryLocationRepository
       .createQueryBuilder()
       .update(DeliveryLocation)
-      .set({ selected_areas: true })
+      .set({ is_deliverable: selectedArea })
       .where("id = :id", { id: locationId })
       .execute();
 

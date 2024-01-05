@@ -17,7 +17,7 @@ export class DeliveryLocation extends BaseEntity {
   district: string;
 
   @Column({ type: "boolean", default: false }) // New column for tracking selected areas
-  selected_areas: boolean;
+  is_deliverable: boolean;
 
   @BeforeInsert()
   private beforeInsert(): void {
