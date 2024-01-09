@@ -81,6 +81,14 @@ const plugins = [
       },
     },
   },
+  {
+    resolve: `medusa-plugin-twilio-sms`,
+    options: {
+      account_sid: process.env.TWILIO_SMS_ACCOUNT_SID,
+      auth_token: process.env.TWILIO_SMS_AUTH_TOKEN,
+      service_sid: process.env.TWILIO_SERVICE_SID,
+    },
+  },
 ];
 
 const modules = {
