@@ -43,6 +43,7 @@
     "medusa-payment-manual": "^1.0.24",
     "medusa-payment-stripe": "^1.1.53",
     "medusa-plugin-meilisearch": "^2.0.10",
+    "multer": "^1.4.5-lts.1",
     "prism-react-renderer": "^2.0.4",
     "typeorm": "^0.3.16"
   },
