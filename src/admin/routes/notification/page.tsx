@@ -33,7 +33,7 @@ const SendNotification = () => {
     e.preventDefault();
 
     let formData = new FormData();
-    console.log(state);
+    // console.log(state);
     for (let [key, value] of Object.entries(state)) {
       formData.append(key, value);
     }
