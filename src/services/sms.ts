@@ -12,7 +12,6 @@ class SmsService extends TransactionBaseService {
     super(container);
     this.customerService = container.customerService;
     // this.twilioSmsService = container.resolve("twilioSmsService");
-    console.log(this.accountSid, this.authToken);
     this.client = new Twilio(this.accountSid, this.authToken);
   }
 
