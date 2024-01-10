@@ -964,55 +964,6 @@
           "manage_inventory": true
         }
       ]
-    },
-    {
-      "title": "Cofsils Naturals Cough Syrup 100ml",
-      "categories": [
-        {
-          "id": "med_syrup"
-        },
-        {
-          "id": "med_cough_syrup"
-        }
-      ],
-      "subtitle": null,
-      "description": "Relives Cough!!.",
-      "handle": "cough-syrup",
-      "is_giftcard": false,
-      "weight": 50,
-      "images": [
-        "https://www.kauverymeds.com/uploads/product/main/1648466213_5530_0.jpg"
-      ],
-      "options": [
-        {
-          "title": "",
-          "values": [
-            ""
-          ]
-        }
-      ],
-      "variants": [
-        {
-          "title": "",
-          "prices": [
-            {
-              "currency_code": "eur",
-              "amount": 100
-            },
-            {
-              "currency_code": "usd",
-              "amount": 120
-            }
-          ],
-          "options": [
-            {
-              "value": ""
-            }
-          ],
-          "inventory_quantity": 100,
-          "manage_inventory": true
-        }
-      ]
     }
   ],
   "categories": [
