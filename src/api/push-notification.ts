@@ -34,8 +34,7 @@ export default function pushNotificationController(
     "/",
     wrapHandler(async (req, res) => {
       const { body } = req;
-      console.log(body)
-      if (body.title.length > 0 && body.message.length > 0) {
+      if (body?.title.length > 0 && body?.message.length > 0) {
         const pushNotificationService: PushNotificationService =
           req.scope.resolve("pushNotificationService");
         const customers = await pushNotificationService.getCustomers();
@@ -43,10 +42,15 @@ export default function pushNotificationController(
           customers,
           body
         );
-        res.send({ message: "Successfully notified", tickets });
+        res.send({
+          status: true,
+          message: "Successfully notified",
+          tickets,
+        });
       } else {
         res.statusCode = 400;
         res.send({
+          status: false,
           message: "title and message should not be empty",
         });
       }
