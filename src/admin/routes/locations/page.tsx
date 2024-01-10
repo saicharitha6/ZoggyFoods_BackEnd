@@ -7,7 +7,7 @@ const CustomLocation = () => {
   const [deliverableAreas, setdeliverableAreas] = useState([]);
   const [selectedPincode, setSelectedPincode] = useState('');
   const [selectedPincodeId, setSelectedPincodeId] = useState('');
-  const backendUrl = 'https://zoggy-foods.plts-dev.com';
+  const backendUrl = process.env.MEDUSA_ADMIN_BACKEND_URL;
   const fetchData = async () => {
     try {
       const response = await fetch(`${backendUrl}/store/locations`);
