@@ -15,7 +15,7 @@ export default function updateOrderController(
     credentials: true,
   };
   const updateOrderRouter = Router();
-  router.use("/store/orders/", updateOrderRouter);
+  router.use("/store/orders", updateOrderRouter);
 
   updateOrderRouter.use(cors(corsOptions));
   // updateOrderRouter.use(authenticate());
