@@ -10,7 +10,9 @@ const CustomLocation = () => {
   const backendUrl = process.env.MEDUSA_ADMIN_BACKEND_URL;
   const fetchData = async () => {
     try {
-      const response = await fetch(`${backendUrl}/store/locations`);
+      const locationUrl = `${backendUrl}/store/locations`
+      console.log(locationUrl)
+      const response = await fetch(locationUrl);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
