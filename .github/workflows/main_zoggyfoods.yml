@@ -1,0 +1,29 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure VM - Zoggy-Foods-Backend
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: 
+    
+jobs:
+    main-env:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Deploying in "Zoggy-Foods-Backend"
+          uses: appleboy/ssh-action@master
+          with:
+            host: 172.191.163.197
+            username: root
+            key: ${{ secrets.SSH_KEY_DEV }}
+            port: 22
+            script: |                 
+                cd /root/Zoggy-Foods-Admin/
+                git pull origin main
+                npm install --legacy-peer-deps
+                npm run build
+                pm2 restart 0
+                exit
