@@ -19,7 +19,7 @@ export default function customStoreController(
   customStoreRouter.use(cors(corsOptions));
 
   customStoreRouter.get(
-    "/customers/:phone",
+    "/customers/phone/:phone",
     wrapHandler(async (req, res) => {
       const {
         params: { phone },
