@@ -15,7 +15,7 @@ export default function updateOrderController(
     credentials: true,
   };
   const updateOrderRouter = Router();
-  router.use("/store/order-update", updateOrderRouter);
+  router.use("/store/orders-update/", updateOrderRouter);
 
   updateOrderRouter.use(cors(corsOptions));
   // updateOrderRouter.use(authenticate());
@@ -23,10 +23,11 @@ export default function updateOrderController(
 
   // Create push notification
   updateOrderRouter.post(
-    "/",
+    "/:id",
     wrapHandler(async (req, res) => {
       try {
-        const { orderId, deliveryDate } = req.body;
+        const orderId = req.params.id; 
+        const { deliveryDate } = req.body;
         const locationUpdated = await OrderRepository
           .createQueryBuilder()
           .update(Order)
